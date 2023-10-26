@@ -1,0 +1,21 @@
+<div>
+    <h1>Dolar Nube</h1>
+</div>
+
+<div>
+    <p>Dolar Compra</p>
+    <ul>
+        <li *ngFor="let item of dolar">
+            {{item.nombre}}: {{item.compra}}
+        </li>
+    </ul>
+</div>
+
+<div>
+    <p>Dolar  Venta</p>
+    <ul>
+        <li *ngFor="let item of dolar">
+            {{item.nombre}}: {{item.venta}}
+        </li>
+    </ul>
+</div>
