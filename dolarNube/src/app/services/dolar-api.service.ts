@@ -12,8 +12,18 @@ export class DolarApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getDolar(): Observable <any>{
+  public getDolarAll(): Observable <any>{
     return this.httpClient.get<any>(this.url + 'dolares')
   }
+
+  public getDolarBlue(): Observable <any>{
+    return this.httpClient.get<any>(this.url + 'dolares/blue')
+  }
+
+  public getDolarOficial(): Observable <any>{
+    return this.httpClient.get<any>(this.url + 'dolares/oficial')
+  }
+
+
 
 }
