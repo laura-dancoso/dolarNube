@@ -1,0 +1,7 @@
+.card-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* Puedes ajustar esto según sea necesario */
+    margin-bottom: 20px; /* Para agregar espacio entre las tarjetas */
+}

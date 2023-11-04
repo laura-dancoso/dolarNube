@@ -9,17 +9,35 @@ import { DolarApiService } from '../services/dolar-api.service';
 export class HomeComponent implements OnInit {
 
   dolar: any [] = [];
+  dolarBlue: any ;
+  dolarOficial: any;
 
   constructor(private dolarApiService : DolarApiService) { }
 
   ngOnInit() {
-    this.getDolar();
+    this.getDolarOficial();
+    this.getDolarBlue();
+    this.getDolarAll();
   }
 
-  getDolar(){
-    this.dolarApiService.getDolar().subscribe (dolar => {
+  getDolarAll(){
+    this.dolarApiService.getDolarAll().subscribe (dolar => {
       this.dolar = dolar;
       console.log (this.dolar)
+    })
+  }
+
+  getDolarBlue(){
+    this.dolarApiService.getDolarBlue().subscribe (dolarBlue => {
+      this.dolarBlue = dolarBlue;
+      console.log (this.dolarBlue)
+    })
+  }
+
+  getDolarOficial(){
+    this.dolarApiService.getDolarOficial().subscribe (dolarOficial => {
+      this.dolarOficial = dolarOficial;
+      console.log (this.dolarOficial)
     })
   }
 }

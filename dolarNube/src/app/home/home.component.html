@@ -1,21 +1,23 @@
-<div>
-    <h1>Dolar Nube</h1>
-</div>
 
-<div>
-    <p>Dolar Compra</p>
-    <ul>
-        <li *ngFor="let item of dolar">
-            {{item.nombre}}: {{item.compra}}
-        </li>
-    </ul>
-</div>
+<div class="bg-light"><h2 class="display-2 text-center">DOLAR$NUBE</h2></div>
+<div class="bg-info card-container">
 
-<div>
-    <p>Dolar  Venta</p>
-    <ul>
-        <li *ngFor="let item of dolar">
-            {{item.nombre}}: {{item.venta}}
-        </li>
-    </ul>
+    <div class="card text-white bg-primary mb-3 flex-fill h-100" style="max-width: 18rem;">
+        <div class="h3 card-header text-center">Dolar Blue</div>
+        <div class="card-body">
+            <h5 class="card-title">Compra: </h5> <p>{{dolarBlue.compra | currency}}</p>
+            <h5 class="card-title">Venta: </h5> <p>{{dolarBlue.compra | currency}}</p>
+            <h5 class="card-title">Actualización: </h5> <p>{{dolarBlue.fechaActualizacion | date: 'short'}}</p>
+        </div>
+    </div>
+
+    <div class="card text-white bg-success mb-3 flex-fill h-100" style="max-width: 18rem;">
+        <div class="h3 card-header text-center">Dolar Oficial</div>
+        <div class="card-body">
+            <h5 class="card-title">Compra: </h5> <p>{{dolarOficial.compra | currency}}</p>
+            <h5 class="card-title">Venta: </h5> <p>{{dolarOficial.venta | currency}}</p>
+            <h5 class="card-title">Actualización: </h5> <p>{{dolarOficial.fechaActualizacion | date: 'short'}}</p>
+        </div>
+    </div>
+
 </div>
