@@ -1,7 +1,12 @@
-.card-container {
-    padding: 30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around; /* Puedes ajustar esto según sea necesario */
-    margin-bottom: 20px; /* Para agregar espacio entre las tarjetas */
+.navbar{
+    background-color: rgba(0,0,0);
+}
+.card{
+    background-color: rgba(0,0,0, 10%);
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.35);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.35);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.35);
+}
+.font-weight-bold{
+    font-weight: bold;
 }

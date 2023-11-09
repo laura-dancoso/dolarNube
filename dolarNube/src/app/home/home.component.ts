@@ -23,21 +23,18 @@ export class HomeComponent implements OnInit {
   getDolarAll(){
     this.dolarApiService.getDolarAll().subscribe (dolar => {
       this.dolar = dolar;
-      console.log (this.dolar)
     })
   }
 
   getDolarBlue(){
     this.dolarApiService.getDolarBlue().subscribe (dolarBlue => {
       this.dolarBlue = dolarBlue;
-      console.log (this.dolarBlue)
     })
   }
 
   getDolarOficial(){
     this.dolarApiService.getDolarOficial().subscribe (dolarOficial => {
       this.dolarOficial = dolarOficial;
-      console.log (this.dolarOficial)
     })
   }
 }

@@ -24,6 +24,4 @@ export class DolarApiService {
     return this.httpClient.get<any>(this.url + 'dolares/oficial')
   }
 
-
-
 }
