@@ -17,6 +17,7 @@ export class AuthService {
 
   private userAuth = new BehaviorSubject<IUser | undefined | null>(undefined);
   public userAuth$ = this.userAuth.asObservable();
+  private userEmail: string | null = null;
 
   public authLoading = false;
   constructor(private httpClient: HttpClient) {
@@ -29,6 +30,7 @@ export class AuthService {
       tap((user:IUser)=> {
         if(user!= null){
           this.userAuth.next(user)
+          this.saveUserEmail(user.email);
           localStorage.setItem('token', token)
         }
       }),
@@ -36,6 +38,7 @@ export class AuthService {
       catchError((err)=>{
         localStorage.removeItem('token');
         this.userAuth.next(null);
+        this.clearUserEmail(); 
         console.error(err);
         throw err;
       }),
@@ -45,6 +48,8 @@ export class AuthService {
     );
   }
 
+  
+
   verifyUser(){
     const token = localStorage.getItem('token');
     if(token != null){
@@ -52,8 +57,21 @@ export class AuthService {
     }
   }
 
+  saveUserEmail(email: string) {
+    this.userEmail = email;
+  }
+
+  public getUserEmail(): string | null {
+    return this.userEmail;
+  }
+
+  private clearUserEmail() {
+    this.userEmail = null;
+  }
+
   logout(){
     localStorage.removeItem('token');
     this.userAuth.next(null);
+    this.clearUserEmail();
   }
 }

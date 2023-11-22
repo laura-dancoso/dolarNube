@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   dolarOficial: any;
 
   userAuthenticated$: Observable<boolean>;
+  userEmail: string | null = null;
 
   loginURL: string;
   logoutURL: string;
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router) {
       this.userAuthenticated$ = this.authService.userAuth$.pipe(map(user=> !!user), shareReplay())
+      this.userEmail = this.authService.getUserEmail();
     this.route.fragment
       .pipe(
         filter(f => f != null && f.length > 0),
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         concatMap((res)=> this.authService.getUser(res.access_token ?? '')),
         tap((res: IUser | null)=> {
           if(res != null ){
+            this.userEmail = res.email;
             this.router.navigate(['/'])
           }
         }),
@@ -63,6 +66,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getDolarBlue();
     this.getDolarAll();
     this.authService.verifyUser();
+    setTimeout(() => {
+      this.userEmail = this.authService.getUserEmail();
+      console.log('User Email:', this.userEmail);
+    }, 1000); //
+
   }
 
   getDolarAll() {
