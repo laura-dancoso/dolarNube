@@ -66,11 +66,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.getDolarBlue();
     this.getDolarAll();
     this.authService.verifyUser();
-    setTimeout(() => {
-      this.userEmail = this.authService.getUserEmail();
-      console.log('User Email:', this.userEmail);
-    }, 1000); //
-
   }
 
   getDolarAll() {
