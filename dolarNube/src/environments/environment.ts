@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+    cognito:{
+    userPoolId:'us-east-1_ifYEc3iRa',
+    userPoolWebClientId:'68kf0ibugtu7n17b2nusqgj5ga',
+    domain: 'https://dolar--nube.auth.us-east-1.amazoncognito.com',
+    redirectTo: 'http://localhost:4200/'
+  }
 };
 
 /*
