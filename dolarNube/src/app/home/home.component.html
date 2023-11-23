@@ -24,17 +24,16 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><h6 class="dropdown-header">{{user?.username}}</h6></li>
-                    <li><button class="text-start w-100 border-0 btn btn-outline-dark">Settings</button></li>
-                    <li><button class="text-start w-100 border-0 btn btn-outline-dark" disabled>Profile</button></li>
+                    <li><button class="text-start w-100 border-0 btn btn-outline-dark">Preferencias</button></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><button class="text-start w-100 border-0 btn btn-outline-dark" (click)="onLogoutClicked()">Sign out</button></li>
+                    <li><button class="text-start w-100 border-0 btn btn-outline-dark" (click)="onLogoutClicked()">Salir</button></li>
                 </ul>
             </div>
             <div *ngIf="(!authService.authLoading) && !(userAuthenticated$ | async)" class="text-end" style="width: 70px;">
                 <a href="{{loginURL}}">
-                <button type="button" class="btn btn-outline-light me-2">Login</button></a>
+                <button type="button" class="btn btn-outline-light me-2">Ingresar</button></a>
             </div>
             <div style="width: 70px;" *ngIf="(authService.authLoading)" >
 
