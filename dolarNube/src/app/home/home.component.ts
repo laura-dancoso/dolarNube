@@ -91,5 +91,12 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.authService.logout();
     window.location.href=this.logoutURL;
   }
+
+  switchFocus(){
+    document.getElementById('exampleModal')?.addEventListener('shown.bs.modal', ()=>{
+      document.getElementById('showFormSwitch')?.focus();
+
+    })
+  }
 }
 
