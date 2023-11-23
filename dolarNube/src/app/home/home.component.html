@@ -68,11 +68,35 @@
         </div>
     </div>
 </div>
+
+<div class="text-center mt-5">
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="form-check form-switch">
+      <input class="form-check-input" type="checkbox" id="showFormSwitch" [(ngModel)]="showForm">
+      <label class="form-check-label" for="showFormSwitch">Preferencias</label>
+    </div>
+  </div>
+
+  <div *ngIf="showForm" class="card my-3 mx-auto" style="max-width: 400px;">
+
+    <div class="card-body">
+      <form>
+        <div class="mb-3">
+          <label for="horaSelect" class="form-label">Selecciona un horario para recibir las notificaciones:</label>
+          <select class="form-select" id="horaSelect" aria-label="Selecciona un horario" [(ngModel)]="selectedHour">
+            <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-success">Guardar</button>
+      </form>
+  </div>
+</div>
+
 <footer class="p-5 w-100" *ngIf="(!authService.authLoading) &&!(userAuthenticated$ | async)">
     <div class="d-grid gap-2 justify-content-center">
         <a href="{{loginURL}}">
 
-            <button class="btn btn-dark" type="button" style="max-width: 600px;">Querés saber cuándo sube o baja el dólar?
+            <button class="btn btn-dark mt-3" type="button" style="max-width: 600px;">Querés saber cuándo sube o baja el dólar?
                 Click aquí para recibir notificaciones!</button>
             </a>
     </div>

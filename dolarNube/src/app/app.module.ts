@@ -9,6 +9,8 @@ import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RegistredUserComponent } from './registred-user/registred-user.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +22,11 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppRoutingModule,
     HttpClientModule,
     NgbModule,
-    NgbDropdownModule
+    NgbDropdownModule,
+    FormsModule
   ],
   providers: [
-    { 
+    {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true
     }
   ],
