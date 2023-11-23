@@ -24,7 +24,7 @@
                 </a>
                 <ul class="dropdown-menu text-small">
                     <li><h6 class="dropdown-header">{{user?.username}}</h6></li>
-                    <li><button class="text-start w-100 border-0 btn btn-outline-dark">Preferencias</button></li>
+                    <li><button class="text-start w-100 border-0 btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Preferencias</button></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -67,31 +67,45 @@
         </div>
     </div>
 </div>
-
-<div class="text-center mt-5">
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="form-check form-switch">
-      <input class="form-check-input" type="checkbox" id="showFormSwitch" [(ngModel)]="showForm">
-      <label class="form-check-label" for="showFormSwitch">Preferencias</label>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Preferencias</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div *ngIf="(!authService.authLoading) && (authService.userAuth$ | async )" class="preferencias text-center mt-5">
+                <div class="d-flex justify-content-center align-items-center">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="showFormSwitch" [(ngModel)]="showForm">
+                    <label class="form-check-label" for="showFormSwitch">Notificaciones</label>
+                  </div>
+                </div>
+                <div *ngIf="showForm" class="card my-3 mx-auto" style="max-width: 400px;">
+                  <div class="card-body">
+                    <form>
+                      <div class="mb-3" id="preferencias">
+                        <label for="horaSelect" class="form-label">Selecciona un horario para recibir las notificaciones:</label>
+                        <select class="form-select" id="horaSelect" aria-label="Selecciona un horario" [(ngModel)]="selectedHour">
+                          <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>
+                        </select>
+                      </div>
+                    </form>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
     </div>
   </div>
 
-  <div *ngIf="showForm" class="card my-3 mx-auto" style="max-width: 400px;">
 
-    <div class="card-body">
-      <form>
-        <div class="mb-3">
-          <label for="horaSelect" class="form-label">Selecciona un horario para recibir las notificaciones:</label>
-          <select class="form-select" id="horaSelect" aria-label="Selecciona un horario" [(ngModel)]="selectedHour">
-            <option *ngFor="let hour of hours" [value]="hour">{{ hour }}:00</option>
-          </select>
-        </div>
-        <button type="button" class="btn btn-success">Guardar</button>
-      </form>
-  </div>
-</div>
 
-<footer class="p-5 w-100" *ngIf="(!authService.authLoading) &&!(userAuthenticated$ | async)">
+<footer class="p-5 w-100" *ngIf="(!authService.authLoading) && !(userAuthenticated$ | async)">
     <div class="d-grid gap-2 justify-content-center">
         <a href="{{loginURL}}">
 

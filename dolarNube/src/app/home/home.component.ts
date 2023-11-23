@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedHour: number = 11; // Valor predeterminado a las 11:00
   hours: number[] = [11, 12, 13, 14, 15, 16];
 
-
   dolar: any[] = [];
   dolarBlue: any;
   dolarOficial: any;
@@ -56,10 +55,6 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe();
       this.loginURL = `${environment.cognito.domain}/login?client_id=${environment.cognito.userPoolWebClientId}&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=${encodeURIComponent(environment.cognito.redirectTo)}`;
       this.logoutURL = `${environment.cognito.domain}/logout?client_id=${environment.cognito.userPoolWebClientId}&logout_uri=${encodeURIComponent(environment.cognito.redirectTo)}`;
-
-
-
-
     }
 
   ngOnDestroy(): void {
