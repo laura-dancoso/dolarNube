@@ -67,6 +67,15 @@
         </div>
     </div>
 </div>
+<footer class="p-5 w-100" *ngIf="(!authService.authLoading) && !(userAuthenticated$ | async)">
+    <div class="d-grid gap-2 justify-content-center">
+        <a href="{{loginURL}}">
+
+            <button class="btn btn-dark mt-3" type="button" style="max-width: 600px;">Querés saber cuándo sube o baja el dólar?
+                Click aquí para recibir notificaciones!</button>
+            </a>
+    </div>
+</footer>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -102,15 +111,3 @@
       </div>
     </div>
   </div>
-
-
-
-<footer class="p-5 w-100" *ngIf="(!authService.authLoading) && !(userAuthenticated$ | async)">
-    <div class="d-grid gap-2 justify-content-center">
-        <a href="{{loginURL}}">
-
-            <button class="btn btn-dark mt-3" type="button" style="max-width: 600px;">Querés saber cuándo sube o baja el dólar?
-                Click aquí para recibir notificaciones!</button>
-            </a>
-    </div>
-</footer>
